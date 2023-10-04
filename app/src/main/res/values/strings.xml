@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">WeatherApp-Demo</string>
+    <string name="zero">0</string>
+    <string name="humidity_label">Humidity</string>
+    <string name="wind_label">Wind</string>
+    <string name="wind_unit_label">%s %.0f km/hr</string>
+</resources>
