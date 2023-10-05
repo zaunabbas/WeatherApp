@@ -39,6 +39,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
+import com.airbnb.lottie.compose.*
 import com.zacoding.android.weather.R
 import com.zacoding.android.weather.presentation.model.CurrentWeatherViewDataModel
 import com.zacoding.android.weather.presentation.theme.Purple200
@@ -96,7 +97,7 @@ fun HomeScreenContent(
     weatherLazyListState: LazyListState,
 ) {
 
-    val bgColor = if (isSystemInDarkTheme()) Color.White else SkyBlue
+    val bgColor = SkyBlue
 
     Surface(modifier = Modifier.fillMaxSize()) {
         Background(
@@ -231,21 +232,22 @@ fun CurrentWeatherInfo(
     ) {
 
         Column {
-            Image(
-                painter = rememberAsyncImagePainter(
-                    ImageRequest.Builder(LocalContext.current)
-                        .data(data = currentWeather.currentIcon)
-                        .apply(block = fun ImageRequest.Builder.() {
-                            crossfade(true)
-                            placeholder(R.drawable.ic_cloud)
-                            error(R.drawable.ic_cloud)
-                        }).build()
-                ),
-                contentDescription = null,
-                contentScale = ContentScale.Fit,
+
+            val clipSpecs = LottieClipSpec.Progress(0.2f, 0.5f)
+
+            val composition by rememberLottieComposition(
+                LottieCompositionSpec.RawRes(
+                    currentWeather.currentIconAnimation
+                )
+            )
+
+            LottieAnimation(
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .size(100.dp),
+                composition = composition,
+                iterations = LottieConstants.IterateForever,
+                clipSpec = clipSpecs,
             )
 
             Row(Modifier.align(Alignment.CenterHorizontally)) {

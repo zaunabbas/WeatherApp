@@ -24,12 +24,12 @@ data class CurrentWeatherViewDataModel(
     val description: String,
     val visibility: String,
     val realFeel: String,
-    val currentIcon: String
+    val currentIcon: String,
+    val currentIconAnimation: Int,
 ) : ViewDataModel()
 
 class CurrentWeatherMapper @Inject constructor(
-    @ApplicationContext
-    private val context: Context
+    @ApplicationContext private val context: Context
 ) : ModelMapper<CurrentWeather, CurrentWeatherViewDataModel> {
 
     override fun mapperToViewDataModel(dataModel: CurrentWeather): CurrentWeatherViewDataModel {
@@ -38,8 +38,7 @@ class CurrentWeatherMapper @Inject constructor(
 
         return CurrentWeatherViewDataModel(
             currentTime = (dataModel.dt * 1000L).toDateTimeString(
-                Constants.DateFormat.EEEE_dd_MMMM,
-                dataModel.timezone
+                Constants.DateFormat.EEEE_dd_MMMM, dataModel.timezone
             ),
             city = dataModel.name.uppercase(),
             country = dataModel.sys.country.toCountryName().uppercase(),
@@ -49,10 +48,34 @@ class CurrentWeatherMapper @Inject constructor(
             visibility = "${dataModel.visibility / 1000} ${context.getString(R.string.km)}",
             realFeel = "${round(dataModel.main.feelsLike).toInt()}${context.getString(R.string.temp)}",
             currentIcon = String.format(
-                Constants.OpenWeather.WEATHER_ICON_URL,
-                weatherItem.icon
+                Constants.OpenWeather.WEATHER_ICON_URL, weatherItem.icon
             ),
             description = weatherItem.description ?: "--",
+            currentIconAnimation = getWeatherAnimation(weatherItem.id)
         )
+    }
+
+
+    private fun getWeatherAnimation(weatherCode: Int): Int {
+        if (weatherCode / 100 == 2) {
+            return R.raw.storm_weather
+        } else if (weatherCode / 100 == 3) {
+            return R.raw.rainy_weather
+        } else if (weatherCode / 100 == 5) {
+            return R.raw.rainy_weather
+        } else if (weatherCode / 100 == 6) {
+            return R.raw.snow_weather
+        } else if (weatherCode / 100 == 7) {
+            return R.raw.unknown
+        } else if (weatherCode == 800) {
+            return R.raw.clear_day
+        } else if (weatherCode == 801) {
+            return R.raw.few_clouds
+        } else if (weatherCode == 803) {
+            return R.raw.broken_clouds
+        } else if (weatherCode / 100 == 8) {
+            return R.raw.cloudy_weather
+        }
+        return R.raw.unknown
     }
 }

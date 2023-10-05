@@ -12,5 +12,6 @@ fun createCurrentWeather() = CurrentWeatherViewDataModel(
     visibility = "10 km",
     realFeel = "23º",
     currentIcon = "https://openweathermap.org/img/wn/04d@4x.png",
-    description = "clear sky"
+    description = "clear sky",
+    currentIconAnimation = 0
 )
