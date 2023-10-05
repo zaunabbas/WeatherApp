@@ -21,10 +21,13 @@ class WeatherRepositoryImpl @Inject constructor(
         emit(result)
     }.flowOn(Dispatchers.IO)
 
-    override fun getWeatherForecast(city: String) = flow {
+    override fun getHourlyWeather(lat: Double, lon: Double) = flow {
         emit(DataResource.Loading)
         val result = callApi {
-            apiService.getFiveDaysWeather(city)
+            apiService.getHourlyWeather(
+                lat = lat,
+                long = lon
+            )
         }
         emit(result)
     }.flowOn(Dispatchers.IO)

@@ -1,5 +1,6 @@
 package com.zacoding.android.weather.data.model
 
+import com.zacoding.android.weather.data.base.DataModel
 import com.google.gson.annotations.SerializedName
 
 data class Main(
@@ -11,4 +12,4 @@ data class Main(
     @SerializedName("humidity") val humidity: Int,
     @SerializedName("sea_level") val seaLevel: Double,
     @SerializedName("grnd_level") val grndLevel: Double
-)
+) : DataModel()

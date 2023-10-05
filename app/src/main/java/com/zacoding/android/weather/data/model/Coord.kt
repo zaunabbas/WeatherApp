@@ -3,8 +3,7 @@ package com.zacoding.android.weather.data.model
 import com.zacoding.android.weather.data.base.DataModel
 import com.google.gson.annotations.SerializedName
 
-data class Wind(
-    @SerializedName("speed") val speed: Double,
-    @SerializedName("deg") val deg: Double,
-    @SerializedName("gust") val gust: Double
+data class Coord(
+    @SerializedName("lat") val lat: Double,
+    @SerializedName("lon") val long: Double
 ) : DataModel()

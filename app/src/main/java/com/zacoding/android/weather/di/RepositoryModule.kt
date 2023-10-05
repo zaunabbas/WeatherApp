@@ -15,7 +15,7 @@ object RepositoryModule {
 
   @Provides
   @ViewModelScoped
-  fun providePokemonRepository(
+  fun provideWeatherRepository(
     service: Api
   ): WeatherRepository {
     return WeatherRepositoryImpl(service)

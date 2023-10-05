@@ -1,5 +1,6 @@
 package com.zacoding.android.weather.data.model
 
+import com.zacoding.android.weather.data.base.DataModel
 import com.google.gson.annotations.SerializedName
 
 data class Sys(
@@ -8,4 +9,4 @@ data class Sys(
     @SerializedName("country") val country: String,
     @SerializedName("sunrise") val sunrise: Long,
     @SerializedName("sunset") val sunset: Long
-)
+) : DataModel()
