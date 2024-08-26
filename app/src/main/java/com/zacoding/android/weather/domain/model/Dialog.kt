@@ -1,5 +1,5 @@
 package com.zacoding.android.weather.domain.model
-import com.example.weather.domain.annotation.Action
+import com.zacoding.android.weather.domain.annotation.Action
 
 data class Dialog(
     val title: String? = null,

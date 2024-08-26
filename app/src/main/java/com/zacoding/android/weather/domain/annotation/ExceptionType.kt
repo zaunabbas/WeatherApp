@@ -1,13 +1,13 @@
-package com.example.weather.domain.annotation
+package com.zacoding.android.weather.domain.annotation
 
 import androidx.annotation.IntDef
-import com.example.weather.domain.annotation.ExceptionType.Companion.ALERT
-import com.example.weather.domain.annotation.ExceptionType.Companion.DIALOG
-import com.example.weather.domain.annotation.ExceptionType.Companion.INLINE
-import com.example.weather.domain.annotation.ExceptionType.Companion.ON_PAGE
-import com.example.weather.domain.annotation.ExceptionType.Companion.REDIRECT
-import com.example.weather.domain.annotation.ExceptionType.Companion.SNACK
-import com.example.weather.domain.annotation.ExceptionType.Companion.TOAST
+import com.zacoding.android.weather.domain.annotation.ExceptionType.Companion.ALERT
+import com.zacoding.android.weather.domain.annotation.ExceptionType.Companion.DIALOG
+import com.zacoding.android.weather.domain.annotation.ExceptionType.Companion.INLINE
+import com.zacoding.android.weather.domain.annotation.ExceptionType.Companion.ON_PAGE
+import com.zacoding.android.weather.domain.annotation.ExceptionType.Companion.REDIRECT
+import com.zacoding.android.weather.domain.annotation.ExceptionType.Companion.SNACK
+import com.zacoding.android.weather.domain.annotation.ExceptionType.Companion.TOAST
 
 /**
  * Clear exception from Throwable

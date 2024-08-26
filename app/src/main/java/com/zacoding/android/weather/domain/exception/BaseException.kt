@@ -1,6 +1,6 @@
 package com.zacoding.android.weather.domain.exception
 
-import com.example.weather.domain.annotation.ExceptionType
+import com.zacoding.android.weather.domain.annotation.ExceptionType
 import com.zacoding.android.weather.domain.model.Dialog
 import com.zacoding.android.weather.domain.model.Redirect
 import com.zacoding.android.weather.domain.model.Tag
